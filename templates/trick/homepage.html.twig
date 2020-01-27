@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SnowTricks !{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <p>
+        <img  class="main_picture" src="{{ asset('jpg/snowtricks.jpg') }}" alt="SnowTricks"/>
+    </p>
+{% endblock %}
