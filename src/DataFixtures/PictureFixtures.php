@@ -13,6 +13,7 @@ class PictureFixtures extends Fixture
         $picture = new Picture();
         $picture->setPicture('defaultTrick.jpg');
         $manager->persist($picture);
+        $this->addReference('Picture' . '_' . 0, $picture);
 
         $manager->flush();
     }
