@@ -12,6 +12,7 @@ class PictureFixtures extends Fixture
     {
         $picture = new Picture();
         $picture->setPicture('defaultTrick.jpg');
+        $picture->setAlt('jump');
         $manager->persist($picture);
         $this->addReference('Picture' . '_' . 0, $picture);
 

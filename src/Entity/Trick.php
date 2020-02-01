@@ -45,6 +45,12 @@ class Trick
     private $category;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Picture", inversedBy="tricksMainPicture")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $mainPicture;
+
+    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Picture", inversedBy="tricks")
      */
     private $pictures;
@@ -121,6 +127,18 @@ class Trick
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getMainPicture(): ?Picture
+    {
+        return $this->mainPicture;
+    }
+
+    public function setMainPicture(?Picture $mainPicture): self
+    {
+        $this->mainPicture = $mainPicture;
 
         return $this;
     }
