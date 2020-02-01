@@ -3,8 +3,28 @@
 {% block title %}SnowTricks !{% endblock %}
 
 {% block body %}
-    {{ parent() }}
+<div class="home_page">
     <p>
         <img  class="main_picture" src="{{ asset('jpg/snowtricks.jpg') }}" alt="SnowTricks"/>
     </p>
+    <div class="container-fluid">
+        <div class="trick_container">
+        {% for trick in tricks %}
+            <div class="trick">
+                <p>
+                    <img src="{{ asset('/jpg/') }}{{ trick.mainPicture.picture }}" alt="{{ trick.mainPicture.alt }}"/>
+                </p>
+                <p>
+                    <a href="#">{{ trick.name|capitalize }}</a>
+                    <a href="#">Edit</a>
+                    <a href="#">Delete</a>
+                </p>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="load-more-btn">
+            <a href="#" class="btn btn-primary">Load More</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

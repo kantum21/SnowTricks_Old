@@ -28,9 +28,20 @@ class Picture
      */
     private $tricks;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $alt;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Trick", mappedBy="mainPicture")
+     */
+    private $tricksMainPicture;
+
     public function __construct()
     {
         $this->tricks = new ArrayCollection();
+        $this->tricksMainPicture = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -73,6 +84,49 @@ class Picture
         if ($this->tricks->contains($trick)) {
             $this->tricks->removeElement($trick);
             $trick->removePicture($this);
+        }
+
+        return $this;
+    }
+
+    public function getAlt(): ?string
+    {
+        return $this->alt;
+    }
+
+    public function setAlt(string $alt): self
+    {
+        $this->alt = $alt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Trick[]
+     */
+    public function getTricksMainPicture(): Collection
+    {
+        return $this->tricksMainPicture;
+    }
+
+    public function addTricksMainPicture(Trick $tricksMainPicture): self
+    {
+        if (!$this->tricksMainPicture->contains($tricksMainPicture)) {
+            $this->tricksMainPicture[] = $tricksMainPicture;
+            $tricksMainPicture->setMainPicture($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTricksMainPicture(Trick $tricksMainPicture): self
+    {
+        if ($this->tricksMainPicture->contains($tricksMainPicture)) {
+            $this->tricksMainPicture->removeElement($tricksMainPicture);
+            // set the owning side to null (unless already changed)
+            if ($tricksMainPicture->getMainPicture() === $this) {
+                $tricksMainPicture->setMainPicture(null);
+            }
         }
 
         return $this;
