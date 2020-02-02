@@ -19,9 +19,9 @@ class TrickRepository extends ServiceEntityRepository
         parent::__construct($registry, Trick::class);
     }
 
-    public function findAllOrderedByUpdatedAtOrCreatedAt()
+    //TODO : Manage with UpdatedAt field ?
+    public function findAllOrderedByCreatedAt()
     {
-        //TODO : Manage with UpdatedAt field
         $qb = $this->createQueryBuilder('t')
             ->orderBy('t.createdAt', 'DESC')
             ->getQuery();

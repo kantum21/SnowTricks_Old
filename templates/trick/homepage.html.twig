@@ -4,8 +4,9 @@
 
 {% block body %}
 <div class="home_page">
-    <p>
+    <p class="header-container">
         <img  class="main_picture" src="{{ asset('jpg/snowtricks.jpg') }}" alt="SnowTricks"/>
+        <h1>Welcome on SnowTricks</h1>
     </p>
     <div class="container-fluid">
         <div class="trick_container">
@@ -15,7 +16,7 @@
                     <img src="{{ asset('/jpg/') }}{{ trick.mainPicture.picture }}" alt="{{ trick.mainPicture.alt }}"/>
                 </p>
                 <p>
-                    <a href="#">{{ trick.name|capitalize }}</a>
+                    <a href="{{ path('trick_show', { id : trick.id }) }}">{{ trick.name|capitalize }}</a>
                     <a href="#">Edit</a>
                     <a href="#">Delete</a>
                 </p>
