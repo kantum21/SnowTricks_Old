@@ -4,10 +4,11 @@
 
 {% block body %}
 <div class="home_page">
-    <p class="header-container">
+    <div class="header-container">
         <img  class="main_picture" src="{{ asset('jpg/snowtricks.jpg') }}" alt="SnowTricks"/>
         <h1>Welcome on SnowTricks</h1>
-    </p>
+        <a href="#"><img class="down_arrow" src="{{ asset('png/scroll-arrow.png') }}" alt="DownArrow" /></a>
+    </div>
     <div class="container-fluid">
         <div class="trick_container">
         {% for trick in tricks %}
@@ -17,14 +18,17 @@
                 </p>
                 <p>
                     <a href="{{ path('trick_show', { id : trick.id }) }}">{{ trick.name|capitalize }}</a>
-                    <a href="#">Edit</a>
-                    <a href="#">Delete</a>
+                    <a href="#"><img class="edit_icon" src="{{ asset('png/edit.png') }}" alt="Edit"></a>
+                    <a href="#"><img  class="delete_icon" src="{{ asset('png/trash.png') }}" alt="Delete"></a>
                 </p>
             </div>
         {% endfor %}
         </div>
-        <div class="load-more-btn">
-            <a href="#" class="btn btn-primary">Load More</a>
+        <div class="load-more-container">
+            <div class="load-more-btn">
+                <a href="#" class="btn btn-primary">Load More</a>
+            </div>
+            <a href="#"><img class="up_arrow" src="{{ asset('png/scroll-arrow.png') }}" alt="UpArrow" /></a>
         </div>
     </div>
 </div>
