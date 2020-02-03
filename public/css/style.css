@@ -9,6 +9,8 @@
 }
 .home_page .header-container
 {
+    margin-bottom: 25px;
+    
     position: relative;
     text-align: center;
 }
