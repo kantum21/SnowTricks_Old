@@ -9,15 +9,24 @@ use App\Entity\Video;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class TrickFixtures extends Fixture implements DependentFixtureInterface
 {
+    private $slugger;
+
+    public function __construct(SluggerInterface $slugger)
+    {
+        $this->slugger = $slugger;
+    }
+
     public function load(ObjectManager $manager)
     {
         for ($i = 0; $i < 10; $i++)
         {
             $trick = new Trick();
             $trick->setName('Trick ' . $i);
+            $trick->setSlug($this->slugger->slug(strtolower($trick->getName())));
             $trick->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac nibh ac nunc mattis maximus eget vitae libero. Curabitur vitae dolor in magna vulputate imperdiet a eu enim. Integer venenatis sit amet metus non tristique. Donec vehicula tortor vel scelerisque lacinia. Cras mattis, quam ac molestie fringilla, sem ligula gravida mi, quis imperdiet odio lacus at velit. Curabitur commodo ex eu sapien malesuada, nec sagittis libero porta. Duis quis enim id lacus aliquet volutpat eget sed risus. Integer vehicula, mi ac porta pretium, enim dolor gravida orci, nec rhoncus metus purus eu nunc. Suspendisse ultricies dui elit, sit amet sollicitudin orci tincidunt ac. Nullam eleifend faucibus risus, sit amet rhoncus tellus gravida non.');
             $trick->setCreatedAt(new \DateTime());
             $trick->setCategory($this->getReference('Category' . '_' . rand(0, 6)));

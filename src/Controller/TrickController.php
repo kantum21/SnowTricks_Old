@@ -24,23 +24,14 @@ class TrickController extends AbstractController
         ]);
     }
 
-    //TODO : use slug ?
     /**
-     * @Route("/ticks/{id}", name="trick_show")
-     * @param $id
-     * @param EntityManagerInterface $entityManager
+     * @Route("/tricks/details/{slug}", name="trick_show")
+     * @param $slug
+     * @param Trick $trick
      * @return Response
      */
-    public function show($id, EntityManagerInterface $entityManager)
+    public function show($slug, Trick $trick)
     {
-        $repository = $entityManager->getRepository(Trick::class);
-        /** @Var Trick $trick */
-        $trick = $repository->findOneBy(['id' => $id]);
-        if (!$trick)
-        {
-            throw $this->createNotFoundException(sprintf('No trick for id "%d"', $id));
-        }
-
         return $this->render('trick/show.html.twig', [
            'trick' => $trick
         ]);
