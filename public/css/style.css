@@ -38,6 +38,11 @@
     flex-wrap: wrap;
     justify-content: space-around;
 }
+.home_page .trick
+{
+    position: relative;
+    width: 320px;
+}
 .home_page .trick img
 {
     width: 320px;
@@ -49,14 +54,19 @@
 }
 .home_page .trick .edit_icon
 {
-    margin-left: 180px;
-    width: 35px;
-    height: 35px;
+    position: absolute;
+    left: 80%;
+
+    width: 25px;
+    height: 25px;
 }
 .home_page .trick .delete_icon
 {
-    width: 35px;
-    height: 35px;
+    position: absolute;
+    left: 90%;
+
+    width: 25px;
+    height: 25px;
 }
 
 .home_page .load-more-container

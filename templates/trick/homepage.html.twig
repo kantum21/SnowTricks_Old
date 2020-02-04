@@ -14,10 +14,10 @@
         {% for trick in tricks %}
             <div class="trick">
                 <p>
-                    <img src="{{ asset('/jpg/') }}{{ trick.mainPicture.picture }}" alt="{{ trick.mainPicture.alt }}"/>
+                    <a href="{{ path('trick_show', { slug : trick.slug }) }}"><img src="{{ asset('/jpg/') }}{{ trick.mainPicture.picture }}" alt="{{ trick.mainPicture.alt }}"/></a>
                 </p>
                 <p>
-                    <a href="{{ path('trick_show', { id : trick.id }) }}">{{ trick.name|capitalize }}</a>
+                    <a href="{{ path('trick_show', { slug : trick.slug }) }}">{{ trick.name|capitalize }}</a>
                     <a href="#"><img class="edit_icon" src="{{ asset('png/edit.png') }}" alt="Edit"></a>
                     <a href="#"><img  class="delete_icon" src="{{ asset('png/trash.png') }}" alt="Delete"></a>
                 </p>
