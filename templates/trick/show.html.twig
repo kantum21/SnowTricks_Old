@@ -5,7 +5,13 @@
 {% block body %}
     <div class="trick_page">
         <div class="header-container">
-            <img  class="trick_main_picture" src="{{ asset('jpg/' ~ trick.mainPicture.picture) }}" alt="{{ trick.mainPicture.alt }}"/>
+            {% if trick.mainPicture %}
+                <img  class="trick_main_picture" src="{{ asset('jpg/' ~ trick.mainPicture.picture) }}" alt="{{ trick.mainPicture.alt }}"/>
+            {% elseif trick.pictures.first %}
+                <img  class="trick_main_picture" src="{{ asset('jpg/' ~ trick.pictures.first.picture) }}" alt="{{ trick.pictures.first.alt }}"/>
+            {% else %}
+                <img  class="trick_main_picture" src="{{ asset('jpg/defaultTrick.jpg') }}" alt="Trick"/>
+            {% endif %}
             <h1>{{ trick.name }}</h1>
             <p class="icons-container">
                 <a href="#"><img class="edit_icon" src="{{ asset('png/edit.png') }}" alt="Edit" /></a>
@@ -15,9 +21,11 @@
         <div class="container-fluid">
             <div class="trick_container">
                 {% for picture in trick.pictures %}
-                    <p class="element">
-                        <img  class="img-element" src="{{ asset('jpg/' ~ picture.picture) }}" alt="{{ picture.alt }}" />
-                    </p>
+                    {% if picture != trick.mainPicture %}
+                        <p class="element">
+                            <img  class="img-element" src="{{ asset('jpg/' ~ picture.picture) }}" alt="{{ picture.alt }}" />
+                        </p>
+                    {% endif %}
                 {% endfor %}
                 {% for video in trick.videos %}
                     <div class="element video-wrapper">

@@ -53,7 +53,6 @@ class Trick
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Picture", inversedBy="tricksMainPicture")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $mainPicture;
 

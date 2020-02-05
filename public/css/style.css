@@ -88,6 +88,12 @@
     position: absolute;
     right: 16px;
 }
+.trick_page
+{
+    width: 70%;
+    margin: 100px auto;
+    background-color: rgb(210,210,210);
+}
 .trick_page .header-container
 {
     margin-bottom: 25px;
