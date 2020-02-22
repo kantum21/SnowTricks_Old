@@ -3,6 +3,7 @@
 {% block title %}New trick{% endblock %}
 
 {% block body %}
+    {{ parent() }}
     {{ form(trickForm) }}
 {% endblock %}
 

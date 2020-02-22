@@ -5,3 +5,7 @@
 {% block body %}
     {{ form(pictureForm) }}
 {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/upload_input_file_bugfix.js') }}" type="text/javascript"></script>
+{% endblock %}
