@@ -4,6 +4,39 @@
 
 {% block body %}
     {{ parent() }}
+<div class="trick_new_page">
+    <div class="header-container">
+        {% if trick.mainPicture %}
+            <img  class="trick_main_picture" src="{{ asset('upload/' ~ trick.mainPicture.picture) }}" alt="{{ trick.mainPicture.alt }}"/>
+        {% else %}
+            <img  class="trick_main_picture" src="{{ asset('jpg/defaultTrick.jpg') }}" alt="Trick"/>
+        {% endif %}
+        <h1>New Trick</h1>
+        <p class="icons-container">
+            <a href="{{ path('trick_edit_main_picture') }}"><img class="edit_icon" src="{{ asset('png/edit.png') }}" alt="Edit" /></a>
+            <a href="{{ path('trick_edit_delete_main_picture') }}"><img class="delete_icon" src="{{ asset('png/trash.png') }}" alt="Delete" /></a>
+        </p>
+    </div>
+    <div class="container-fluid">
+        <div class="trick_container">
+            {% for picture in trick.pictures %}
+                {% if picture != trick.mainPicture %}
+                    <p class="element">
+                        <img  class="img-element" src="{{ asset('upload/' ~ picture.picture) }}" alt="{{ picture.alt }}" />
+                        <a href="#"><img class="edit_icon" src="{{ asset('png/edit.png') }}" alt="Edit" /></a>
+                        <a href="#"><img class="delete_icon" src="{{ asset('png/trash.png') }}" alt="Delete" /></a>
+                    </p>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div>
+        <a href="{{ path('picture_new') }}"><button type="button" class="btn btn-primary">Create new picture</button></a>
+        <a href="{{ path('trick_edit_add_picture') }}"><button type="button" class="btn btn-primary">Add an existing picture</button></a>
+        <button type="button" class="btn btn-primary">Create new video</button>
+        <button type="button" class="btn btn-primary">Add an existing video</button>
+    </div>
     {{ form(trickForm) }}
+</div>
 {% endblock %}
 

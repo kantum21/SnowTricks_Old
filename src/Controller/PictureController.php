@@ -41,11 +41,22 @@ class PictureController extends AbstractController
             $entityManager->flush();
             $this->addFlash('success', 'Picture saved !');
 
-            return $this->redirectToRoute('trick_new');
+            return $this->redirectToRoute('trick_edit_new');
         }
 
         return $this->render('picture/new.html.twig', [
             'pictureForm' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @param Picture $picture
+     * @return Response
+     */
+    public function show(Picture $picture)
+    {
+        return $this->render('picture/show.html.twig', [
+            'picture' => $picture,
         ]);
     }
 }
