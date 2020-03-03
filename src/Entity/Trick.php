@@ -9,7 +9,10 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TrickRepository")
- * @UniqueEntity("name")
+ * @UniqueEntity(
+ *     fields={"name"},
+ *     message="There is already a trick for this name"
+ * )
  */
 class Trick
 {

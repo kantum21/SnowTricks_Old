@@ -48,15 +48,4 @@ class PictureController extends AbstractController
             'pictureForm' => $form->createView()
         ]);
     }
-
-    /**
-     * @param Picture $picture
-     * @return Response
-     */
-    public function show(Picture $picture)
-    {
-        return $this->render('picture/show.html.twig', [
-            'picture' => $picture,
-        ]);
-    }
 }
