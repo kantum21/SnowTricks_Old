@@ -21,11 +21,11 @@
     </div>
     {{ form_start(trickForm) }}
     <!-- Modal MainPicture-->
-    <div class="modal fade" id="selectMainPictureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="selectMainPictureModal" tabindex="-1" role="dialog" aria-labelledby="mainPictureModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{ form_label(trickForm.mainPicture, 'Main Picture') }}</h5>
+                    <h5 class="modal-title" id="mainPictureModalLabel">{{ form_label(trickForm.mainPicture, 'Main Picture') }}</h5>
                 </div>
                 <div class="modal-body">
                     {{ form_errors(trickForm.mainPicture) }}
@@ -33,9 +33,9 @@
                         {% for element in trickForm.children.mainPicture.children %}
                             <div class="form-check">
                                 <input type="radio" id="{{ element.vars.id }}" name="{{ element.vars.full_name }}" required="required" class="form-check-input {% if element.vars.data == true %}default{% endif %}" value="{{ element.vars.value }}"
-                                       {% if element.vars.data == true %}
-                                           checked="checked"
-                                       {% endif  %}
+                                        {% if element.vars.data == true %}
+                                            checked="checked"
+                                        {% endif  %}
                                 >
                                 <label class="form-check-label required" for="{{ element.vars.id }}"><img class="mini" src="{{ asset('upload/' ~ element.vars.label) }}" alt="trick" /></label>
                             </div>
@@ -51,11 +51,11 @@
     </div>
     {% do trickForm.mainPicture.setRendered() %}
     <!-- Modal Pictures-->
-    <div class="modal fade" id="selectPicturesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="selectPicturesModal" tabindex="-1" role="dialog" aria-labelledby="picturesModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{ form_label(trickForm.pictures, 'Pictures') }}</h5>
+                    <h5 class="modal-title" id="picturesModalLabel">{{ form_label(trickForm.pictures, 'Pictures') }}</h5>
                 </div>
                 <div class="modal-body">
                     {{ form_errors(trickForm.pictures) }}
@@ -77,11 +77,11 @@
     </div>
     {% do trickForm.pictures.setRendered() %}
     <!-- Modal Videos-->
-    <div class="modal fade" id="selectVideosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="selectVideosModal" tabindex="-1" role="dialog" aria-labelledby="videosModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{ form_label(trickForm.videos, 'Videos') }}</h5>
+                    <h5 class="modal-title" id="videosModalLabel">{{ form_label(trickForm.videos, 'Videos') }}</h5>
                 </div>
                 <div class="modal-body">
                     {{ form_errors(trickForm.videos) }}
