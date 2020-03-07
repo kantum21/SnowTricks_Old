@@ -3,6 +3,7 @@
 {% block title %}SnowTricks !{% endblock %}
 
 {% block body %}
+{{ parent() }}
 <div class="home_page">
     <div class="header-container">
         <img  class="main_picture" src="{{ asset('jpg/snowtricks.jpg') }}" alt="SnowTricks"/>
@@ -16,7 +17,7 @@
                 <p>
                     <a href="{{ path('trick_show', { slug : trick.slug }) }}">
                         {% if trick.mainPicture.picture %}
-                            <img src="{{ asset('/jpg/') }}{{ trick.mainPicture.picture }}" alt="{{ trick.mainPicture.alt }}"/>
+                            <img src="{{ asset('/upload/') }}{{ trick.mainPicture.picture }}" alt="{{ trick.mainPicture.alt }}"/>
                         {% else %}
                             <img src="{{ asset('/jpg/defaultTrick.jpg') }}" alt="Trick"/>
                         {% endif %}

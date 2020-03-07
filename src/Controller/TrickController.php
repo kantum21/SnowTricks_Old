@@ -54,9 +54,6 @@ class TrickController extends AbstractController
         $form = $this->createForm(TrickFormType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
-            dd($form->getData());
-
             /** @var Trick $trick */
             $trick = $form->getData();
             $trick->setSlug($slugger->slug($trick->getName()));
