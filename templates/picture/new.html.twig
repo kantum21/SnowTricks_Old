@@ -3,7 +3,15 @@
 {% block title %}New picture{% endblock %}
 
 {% block body %}
-    {{ form(pictureForm) }}
+    <div class="picture_new_page">
+        {{ form_start(pictureForm) }}
+        {{ form_row(pictureForm.picture) }}
+        {{ form_row(pictureForm.alt) }}
+        <div class="buttons">
+            <input class="btn btn-primary" type="submit" value="Save" />
+        </div>
+        {{ form_end(pictureForm) }}
+    </div>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
