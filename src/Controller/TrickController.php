@@ -8,6 +8,7 @@ use App\Repository\TrickRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -30,11 +31,10 @@ class TrickController extends AbstractController
 
     /**
      * @Route("/tricks/details/{slug}", name="trick_show")
-     * @param $slug
      * @param Trick $trick
      * @return Response
      */
-    public function show($slug, Trick $trick)
+    public function show(Trick $trick)
     {
         return $this->render('trick/show.html.twig', [
            'trick' => $trick
@@ -56,7 +56,7 @@ class TrickController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var Trick $trick */
             $trick = $form->getData();
-            $trick->setSlug($slugger->slug($trick->getName()));
+            $trick->setSlug($slugger->slug(strtolower($trick->getName())));
             $trick->setCreatedAt(new \DateTime());
             $entityManager->persist($trick);
             $entityManager->flush();
@@ -68,5 +68,27 @@ class TrickController extends AbstractController
         return $this->render('trick/new.html.twig', [
             'trickForm' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/tricks/delete/{slug}", name="trick_delete")
+     * @param Trick $trick
+     * @param EntityManagerInterface $entityManager
+     * @return RedirectResponse
+     */
+    public function delete(Trick $trick, EntityManagerInterface $entityManager)
+    {
+        foreach ($trick->getPictures() as $picture)
+        {
+            $trick->removePicture($picture);
+        }
+        foreach ($trick->getVideos() as $video)
+        {
+            $trick->removeVideo($video);
+        }
+        $entityManager->remove($trick);
+        $entityManager->flush();
+        $this->addFlash('success', 'Trick deleted !');
+        return $this->redirectToRoute('app_homepage');
     }
 }
