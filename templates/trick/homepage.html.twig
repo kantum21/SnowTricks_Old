@@ -11,12 +11,17 @@
         <a href="#"><img class="down_arrow" src="{{ asset('png/scroll-arrow.png') }}" alt="DownArrow" /></a>
     </div>
     <div class="container-fluid">
+        <div class="add_trick_container">
+            <div class="add_trick_btn">
+                <a href="{{ path('trick_edit_new') }}" class="btn btn-primary">Add Trick</a>
+            </div>
+        </div>
         <div class="trick_container">
         {% for trick in tricks %}
             <div class="trick">
                 <p>
                     <a href="{{ path('trick_show', { slug : trick.slug }) }}">
-                        {% if trick.mainPicture.picture %}
+                        {% if trick.mainPicture %}
                             <img src="{{ asset('/upload/') }}{{ trick.mainPicture.picture }}" alt="{{ trick.mainPicture.alt }}"/>
                         {% else %}
                             <img src="{{ asset('/jpg/defaultTrick.jpg') }}" alt="Trick"/>
