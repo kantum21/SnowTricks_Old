@@ -29,6 +29,17 @@
     bottom: 50px;
     right: 16px;
 }
+.home_page .add_trick_container
+{
+    height: 75px;
+    position: relative;
+}
+.home_page .add_trick_btn
+{
+    display: block;
+    width: 100px;
+    margin: auto;
+}
 .home_page .trick_container
 {
     margin-bottom: 25px;

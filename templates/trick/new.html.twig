@@ -31,14 +31,12 @@
                     <fieldset class="form-group">
                         <div id="trick_form_mainPicture" class="mini-container">
                             {% for element in trickForm.children.mainPicture.children %}
+                                {% if element.vars.id != 'trick_form_mainPicture_placeholder' %}
                                 <div class="form-check">
-                                    <input type="radio" id="{{ element.vars.id }}" name="{{ element.vars.full_name }}" required="required" class="form-check-input {% if element.vars.data == true %}default{% endif %}" value="{{ element.vars.value }}"
-                                            {% if element.vars.data == true %}
-                                                checked="checked"
-                                            {% endif  %}
-                                    >
+                                    <input type="radio" id="{{ element.vars.id }}" name="{{ element.vars.full_name }}" class="form-check-input" value="{{ element.vars.value }}" />
                                     <label class="form-check-label required" for="{{ element.vars.id }}"><img class="mini" src="{{ asset('upload/' ~ element.vars.label) }}" alt="trick" /></label>
                                 </div>
+                                {% endif %}
                             {% endfor %}
                         </div>
                     </fieldset>
