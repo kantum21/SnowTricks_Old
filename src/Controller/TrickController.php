@@ -71,6 +71,38 @@ class TrickController extends AbstractController
     }
 
     /**
+     * @Route("tricks/edit/{slug}", name="trick_edit")
+     * @param Request $request
+     * @param Trick $trick
+     * @param SluggerInterface $slugger
+     * @param EntityManagerInterface $entityManager
+     * @return Response
+     * @throws Exception
+     */
+    public function edit(Request $request, Trick $trick, SluggerInterface $slugger, EntityManagerInterface $entityManager)
+    {
+        $form = $this->createForm(TrickFormType::class, $trick);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            /** @var Trick $trick */
+            $trick = $form->getData();
+            $trick->setSlug($slugger->slug(strtolower($trick->getName())));
+            $trick->setUpdatedAt(new \DateTime());
+            $entityManager->persist($trick);
+            $entityManager->flush();
+            $this->addFlash('success', 'Trick updated !');
+
+            return $this->redirectToRoute('app_homepage');
+        }
+
+        return $this->render('trick/edit.html.twig', [
+            'trickForm' => $form->createView(),
+            'trick' => $trick
+        ]);
+    }
+
+    /**
      * @Route("/tricks/delete/{slug}", name="trick_delete")
      * @param Trick $trick
      * @param EntityManagerInterface $entityManager

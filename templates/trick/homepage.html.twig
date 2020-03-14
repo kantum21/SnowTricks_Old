@@ -30,7 +30,7 @@
                 </p>
                 <p>
                     <a href="{{ path('trick_show', { slug : trick.slug }) }}">{{ trick.name|capitalize }}</a>
-                    <a href="#"><img class="edit_icon" src="{{ asset('png/edit.png') }}" alt="Edit"></a>
+                    <a href="{{ path('trick_edit', { slug : trick.slug }) }}"><img class="edit_icon" src="{{ asset('png/edit.png') }}" alt="Edit"></a>
                     <a href="{{ path('trick_delete', { slug : trick.slug}) }}" data-confirm="Do you really want to delete ?"><img  class="delete_icon" src="{{ asset('png/trash.png') }}" alt="Delete"></a>
                 </p>
             </div>
