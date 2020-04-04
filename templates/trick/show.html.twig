@@ -12,7 +12,7 @@
             {% else %}
                 <img  class="trick_main_picture" src="{{ asset('jpg/defaultTrick.jpg') }}" alt="Trick"/>
             {% endif %}
-            <h1>{{ trick.name }}</h1>
+            <h1>{{ trick.name|capitalize }}</h1>
             <p class="icons-container">
                 <a href="#"><img class="edit_icon" src="{{ asset('png/edit.png') }}" alt="Edit" /></a>
                 <a href="#"><img class="delete_icon" src="{{ asset('png/trash.png') }}" alt="Delete" /></a>
