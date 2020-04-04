@@ -296,6 +296,57 @@
     width: 35px;
     height: 35px;
 }
+.trick_edit_page .mini-container
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.trick_edit_page .media-container
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.trick_edit_page #trick_form_pictures
+{
+    display: inline;
+}
+.trick_edit_page #trick_form_videos
+{
+    display: inline;
+}
+.trick_edit_page .form-check
+{
+    display: inline-block;
+}
+.trick_edit_page .mini
+{
+    width: 150px;
+    height: 125px;
+}
+.trick_edit_page iframe
+{
+    width: 150px;
+    height: 125px;
+}
+.trick_edit_page .icons-container-mini
+{
+    text-align: right   ;
+}
+.trick_edit_page .icons-container-mini img
+{
+    width: 25px;
+    height: 25px;
+}
+.trick_edit_page .buttons
+{
+    padding-top: 75px;
+    padding-bottom: 75px;
+    text-align: center;
+}
 .picture_new_page
 {
     display: flex;
@@ -309,6 +360,37 @@
     background-color: rgb(210,210,210);
 }
 .picture_new_page .buttons
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.picture_edit_page
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    width: 70%;
+    height: 550px;
+    margin: 100px auto;
+    background-color: rgb(210,210,210);
+}
+.picture_edit_page p
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.picture_edit_page img
+{
+    width: 300px;
+    height: 250px;
+}
+.picture_edit_page .buttons
 {
     display: flex;
     flex-direction: row;
@@ -332,6 +414,33 @@
     height: 300px;
 }
 .video_new_page .buttons
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.video_edit_page
+{
+    width: 70%;
+    height: 750px;
+    margin: 100px auto;
+    background-color: rgb(210,210,210);
+}
+.video_edit_page .video-iframe
+{
+    text-align: center;
+}
+.video_edit_page iframe
+{
+    width: 300px;
+    height: 250px;
+}
+.video_edit_page textarea
+{
+    height: 300px;
+}
+.video_edit_page .buttons
 {
     display: flex;
     flex-direction: row;
